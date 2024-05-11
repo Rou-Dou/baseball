@@ -4,9 +4,9 @@ class Game:
     def __init__(self) -> None:
         self.game_id: str = ''
         self.plays: list[Play] = []
-        self.misc: GameInfoMisc = GameInfoMisc()
-        self.weather: GameInfoWeather = GameInfoWeather()
-        self.date_time: GameInfoDateTime = GameInfoDateTime()
+        self.game_info_misc: Info = Info()
+        self.weather: Weather = Weather()
+        self.datetime_info: DateTimeInfo = DateTimeInfo()
         self.pitcher_info: GameInfoPitcher = GameInfoPitcher()
     def __str__(self):
         return f'{self.game_id},'
@@ -26,13 +26,13 @@ class Play:
     def __str__(self):
         return f'{self.inning}, {self.homay}, {self.batter_id}, {self.balls}, {self.strikes}, {self.pitchresult}, {self.deepLore}'
     
-class GameInfoDateTime:
+class DateTimeInfo:
     def __init__(self) -> None:
         self.date: str = ''
         self.start_time: time = time(12, 0, 0, 0, tzinfo=None)
         self.timeofgame: int = 0
 
-class GameInfoWeather:
+class Weather:
     def __init__(self) -> None:
         self.daynight: str = ''   
         self.temp: int = 0
@@ -42,7 +42,7 @@ class GameInfoWeather:
         self.precip: str = 'none'
         self.sky: str = ''
 
-class GameInfoMisc:
+class Info:
     def __init__(self) -> None:
         self.game_num: int = 0
         self.visit_team: str = ''
@@ -59,4 +59,3 @@ class GameInfoPitcher:
         self.winning_pitcher: str = ''
         self.losing_pitcher: str = ''
         self.save: str = ''
-        self.pitches: str = ''
