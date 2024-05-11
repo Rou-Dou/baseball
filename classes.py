@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime, time, date
 
 class Game:
     def __init__(self) -> None:
@@ -28,8 +28,8 @@ class Play:
     
 class GameInfoDateTime:
     def __init__(self) -> None:
-        self.date: str = ''
-        self.start_time: time = time(12, 0, 0, 0, tzinfo=None)
+        self.date: date = date(1990, 1, 1)
+        self.starttime: time = time(12, 0, 0, 0, tzinfo=None)
         self.timeofgame: int = 0
 
 class GameInfoWeather:
@@ -44,9 +44,9 @@ class GameInfoWeather:
 
 class GameInfoMisc:
     def __init__(self) -> None:
-        self.game_num: int = 0
-        self.visit_team: str = ''
-        self.home_team: str = ''
+        self.number: int = 0
+        self.visteam: str = ''
+        self.hometeam: str = ''
         self.site: str = ''
         self.innings: int = 9
         self.tiebreaker: int = 2
@@ -56,6 +56,6 @@ class GameInfoMisc:
 
 class GameInfoPitcher:
     def __init__(self) -> None:
-        self.winning_pitcher: str = ''
-        self.losing_pitcher: str = ''
+        self.wp: str = ''
+        self.lp: str = ''
         self.save: str = ''

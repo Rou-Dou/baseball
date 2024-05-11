@@ -1,6 +1,19 @@
 from typing import Any
 from parameters import *
 from classes import *
+import json
+
+info_attrs: list[str] = ["visteam", "hometeam", "site", "date", 
+                           "number", "starttime", "daynight", "usedh", 
+                           "innings", "tiebreaker", "umphome", "ump1b", 
+                           "ump2b", "ump3b", "umplf", "umprf", "pitches", 
+                           "temp", "winddir", "windspeed", "fieldcond", 
+                           "precip", "sky", "timeofgame", "attendence", 
+                           "wp", "lp", "save"]
+
+json_file = open('game_map.json', 'r')
+game_map: dict[str,str] = json.load(json_file)
+json_file.close()
 
 def readerpbp(file) -> list[Game]:
     # Using readlines()
@@ -28,61 +41,22 @@ def readerpbp(file) -> list[Game]:
                 play.deepLore = splitText[6]
             elif splitText[0] == pbp_kw_info:
                 split_text_value = splitText[2]
-                match splitText[1]:
-                    case "visteam":
-                        game.misc.visit_team = split_text_value
-                    case "hometeam":
-                        game.misc.home_team = split_text_value
-                    case "site":
-                        game.misc.site = split_text_value
-                    case "date":
-                        game.date_time.date = split_text_value
-                    case "number":
-                        game.misc.game_num =  split_text_value
-                    case "starttime":
-                        game.date_time.start_time = split_text_value
-                    case "daynight":
-                        game.weather.daynight = split_text_value
-                    case "usedh":
-                        game.misc.usedh = split_text_value
-                    case "innings":
-                        game.misc.innings = split_text_value
-                    case "tiebreaker":
-                        game.misc.tiebreaker = split_text_value
-                    case "umphome":
-                        game.misc.umpires.append(split_text_value)
-                    case "ump1b":
-                        game.misc.umpires.append(split_text_value)
-                    case "ump2b":
-                        game.misc.umpires.append(split_text_value)
-                    case "ump3b":
-                        game.misc.umpires.append(split_text_value)
-                    case "umplf":
-                        game.misc.umpires.append(split_text_value)
-                    case "umprf":
-                        game.misc.umpires.append(split_text_value)
-                    case "pitches":
-                        game.pitcher_info.pitches = split_text_value
-                    case "temp":
-                        game.weather.temp = split_text_value
-                    case "winddir":
-                        game.weather.winddir = split_text_value
-                    case "windspeed":
-                        game.weather.windspeed = split_text_value
-                    case "fieldcond":
-                        game.weather.fieldcond = split_text_value
-                    case "precip":
-                        game.weather.precip = split_text_value
-                    case "sky":
-                        game.weather.sky = split_text_value
-                    case "timeofgame":
-                        game.date_time.timeofgame = split_text_value
-                    case "attendence":
-                        game.misc.attendence = split_text_value
-                    case "wp":
-                        game.pitcher_info.winning_pitcher = split_text_value
-                    case "lp":
-                        game.pitcher_info.losing_pitcher = split_text_value
-                    case "save":
-                        game.pitcher_info.save = split_text_value
+                for attr in info_attrs:
+                    if attr == splitText[1]:
+                        if attr.find('ump') != -1:
+                            game.misc.umpires.append(split_text_value)
+                        elif attr == 'date':
+                            game.date_time.date = datetime.strptime(split_text_value, '%Y/%m/%d').date()
+                        elif attr == 'starttime':
+                            game.date_time.starttime = datetime.strptime(split_text_value, '%I:%M%p').time()
+                        else:
+                            first_layer = game_map[attr]
+                            member_object = getattr(game, first_layer)
+                            setattr(member_object, attr, split_text_value)
+                        break
+
     return games
+
+
+def WritePlays(plays):
+    return
