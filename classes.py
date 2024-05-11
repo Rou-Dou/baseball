@@ -4,6 +4,7 @@ class Game:
     def __init__(self) -> None:
         self.game_id: str = ''
         self.plays: list[Play] = []
+        self.players: list[Player] = []
         self.misc: GameInfoMisc = GameInfoMisc()
         self.weather: GameInfoWeather = GameInfoWeather()
         self.date_time: GameInfoDateTime = GameInfoDateTime()
@@ -39,7 +40,7 @@ class GameInfoWeather:
         self.winddir: str = ''
         self.windspeed: int = 0
         self.fieldcond: str = 'unknown'
-        self.precip: str = 'none'
+        self.precip: str = 'unknown'
         self.sky: str = ''
 
 class GameInfoMisc:
@@ -48,7 +49,7 @@ class GameInfoMisc:
         self.visteam: str = ''
         self.hometeam: str = ''
         self.site: str = ''
-        self.innings: int = 9
+        self.innings: int = 0
         self.tiebreaker: int = 2
         self.usedh: bool = True
         self.umpires: list[str] = []
@@ -59,3 +60,12 @@ class GameInfoPitcher:
         self.wp: str = ''
         self.lp: str = ''
         self.save: str = ''
+
+class Player:
+    def __init__(self, player_id: str, player_name: str, home_away: int, 
+                 bat_position: int, field_position: int) -> None:
+        self.player_id: str = player_id
+        self.player_name: str = player_name
+        self.home_away: int = home_away
+        self.bat_position:int = bat_position
+        self.field_position: int = field_position

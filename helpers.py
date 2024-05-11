@@ -50,11 +50,13 @@ def readerpbp(file) -> list[Game]:
                         elif attr == 'starttime':
                             game.date_time.starttime = datetime.strptime(split_text_value, '%I:%M%p').time()
                         else:
-                            first_layer = game_map[attr]
-                            member_object = getattr(game, first_layer)
+                            member_name = game_map[attr]
+                            member_object = getattr(game, member_name)
                             setattr(member_object, attr, split_text_value)
                         break
-
+            elif splitText[0] == pbp_kw_start:
+                new_player = Player(splitText[1], splitText[2], int(splitText[3]), int(splitText[4]), int(splitText[5]))
+                game.players.append(new_player)
     return games
 
 
