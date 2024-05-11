@@ -1,5 +1,6 @@
 from helpers import *
 import mypy
+from enum import Enum
 
 playHeader: str = 'game_id, inning, homay, batter_id, balls, strikes, pitchresult, deepLore'
 
@@ -9,6 +10,9 @@ def main():
     for itrgame in games:
         for itrplay in itrgame.plays:
             print(f'{itrgame} {itrplay}')
+    
+    for itrgame in games:
+        print(f'{itrgame.game_id}, {itrgame.date_time.date}, {itrgame.date_time.start_time}, {itrgame.date_time.timeofgame}')
 
 
 def WritePlays(plays):
