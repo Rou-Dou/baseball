@@ -3,7 +3,7 @@ import os
 pbp: str = "\\Data\\pbp\\"
 # gl = str("\\Data\\gl\\")
 wd: str = os.getcwd()
-file_name = "2000ANA.EVA"
+file_name = "2017SLN.EVN"
 
 # These are the keywords for parsing the play by play txt documents from https://www.retrosheet.org
 

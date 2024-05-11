@@ -17,7 +17,6 @@ def main():
     #     for player in itrgame.players:
     #         print(f'{player.player_id}, {player.player_name}, {player.home_away}, {player.bat_position}, {player.field_position}')
 
-
 if __name__ == "__main__":
     main()
 
