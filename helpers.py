@@ -60,9 +60,15 @@ def readerpbp(file) -> list[Game]:
                             member_object = getattr(game, member_name)
                             setattr(member_object, attr, split_text_value)
                         break
-            elif splitText[0] == pbp_kw_start:
+
+            elif (splitText[0] == pbp_kw_start) or (splitText[0] == pbp_kw_sub):
                 new_player = Player(splitText[1], splitText[2], int(splitText[3]), int(splitText[4]), int(splitText[5]))
-                game.players.append(new_player)
+                match splitText[0]:
+                    case "start":
+                        game.players.append(new_player)
+                    case "sub":
+                        game.plays.append(new_player)
+
     return games
 
 

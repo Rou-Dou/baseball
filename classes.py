@@ -3,7 +3,7 @@ from datetime import datetime, time, date
 class Game:
     def __init__(self) -> None:
         self.game_id: str = ''
-        self.plays: list[Play] = []
+        self.plays: list[Play, Player] = []
         self.players: list[Player] = []
         self.misc: GameInfoMisc = GameInfoMisc()
         self.weather: GameInfoWeather = GameInfoWeather()
@@ -69,3 +69,6 @@ class Player:
         self.home_away: int = home_away
         self.bat_position:int = bat_position
         self.field_position: int = field_position
+    
+    def __str__(self) -> str:
+        return f'{self.player_id}, {self.player_name}, {self.home_away}, {self.bat_position}, {self.field_position}'
