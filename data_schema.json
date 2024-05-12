@@ -1,0 +1,49 @@
+{"Game" : {
+        "game_id" : "str",
+        "visteam" : "string",
+        "hometeam" : "string",
+        "site" : "sting",
+        "date" : "date",
+        "number" : "int",
+        "starttime" : "time",
+        "daynight" : "string",
+        "usedh" : "bool",
+        "innings" : "int",
+        "tiebreaker" : "int",
+        "umphome" : "str",
+        "ump1b" : "str",
+        "ump2b" : "str",
+        "ump3b" : "str",
+        "umplf" : "str",
+        "umprf" : "str",
+        "pitches" : "int",
+        "temp" : "int",
+        "winddir" : "str",
+        "windspeed" : "int",
+        "fieldcond" : "str",
+        "precip" : "str",
+        "sky" : "str",
+        "timeofgame" : "int",
+        "attendence" : "int",
+        "wp" : "str",
+        "lp" : "str",
+        "save" : "str"
+    },
+"Play" : {
+        "inning" : "int",
+        "homay" : "str",
+        "batter_id" : "str",
+        "balls" : "int",
+        "strikes" : "int",
+        "pitchresult" : "str",
+        "deepLore" : "str"
+    },
+"Player" : {
+        "player_id" : "str",
+        "player_name" : "str",
+        "home_away" : "int",
+        "bat_position" : "int",
+        "field_position" :  "int"
+}
+}
+
