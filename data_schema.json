@@ -1,4 +1,5 @@
-{"Game" : {
+{
+    "Game" : {
         "game_id" : "str",
         "visteam" : "string",
         "hometeam" : "string",
@@ -29,21 +30,21 @@
         "lp" : "str",
         "save" : "str"
     },
-"Play" : {
-        "inning" : "int",
-        "homay" : "str",
-        "batter_id" : "str",
-        "balls" : "int",
-        "strikes" : "int",
-        "pitchresult" : "str",
-        "deepLore" : "str"
+    "Play" : {
+            "inning" : "int",
+            "homay" : "str",
+            "batter_id" : "str",
+            "balls" : "int",
+            "strikes" : "int",
+            "pitchresult" : "str",
+            "deepLore" : "str"
     },
-"Player" : {
-        "player_id" : "str",
-        "player_name" : "str",
-        "home_away" : "int",
-        "bat_position" : "int",
-        "field_position" :  "int"
-}
+    "Player" : {
+            "player_id" : "str",
+            "player_name" : "str",
+            "home_away" : "int",
+            "bat_position" : "int",
+            "field_position" :  "int"
+    }
 }
 
