@@ -3,13 +3,16 @@ from parameters import *
 from classes import *
 import json
 
-info_attrs: list[str] = ["visteam", "hometeam", "site", "date", 
-                           "number", "starttime", "daynight", "usedh", 
-                           "innings", "tiebreaker", "umphome", "ump1b", 
-                           "ump2b", "ump3b", "umplf", "umprf", "pitches", 
-                           "temp", "winddir", "windspeed", "fieldcond", 
-                           "precip", "sky", "timeofgame", "attendence", 
-                           "wp", "lp", "save"]
+info_attrs: list[str] = \
+    [
+        "visteam", "hometeam", "site", "date", 
+        "number", "starttime","daynight", "usedh", 
+        "innings", "tiebreaker", "umphome", "ump1b", 
+        "ump2b", "ump3b", "umplf", "umprf", "pitches", 
+        "temp", "winddir", "windspeed", "fieldcond", 
+        "precip", "sky", "timeofgame", "attendence", 
+        "wp", "lp", "save"
+    ]
 
 json_file = open('game_map.json', 'r')
 game_map: dict[str,str] = json.load(json_file)
@@ -25,10 +28,12 @@ def readerpbp(file) -> list[Game]:
         for line in f:
             line = line.rstrip(crlf)  # strip out all tailing whitespace
             splitText = line.split(',')
+
             if splitText[0] == pbp_kw_id:
                 game = Game()
                 games.append(game)
                 game.game_id = splitText[1]
+
             elif splitText[0] == pbp_kw_play: # play,1,0,knobc001,21,CBBX,S7/7S
                 play = Play()
                 game.plays.append(play)
@@ -39,6 +44,7 @@ def readerpbp(file) -> list[Game]:
                 play.strikes = int(splitText[4][1])
                 play.pitchresult = splitText[5]
                 play.deepLore = splitText[6]
+                
             elif splitText[0] == pbp_kw_info:
                 split_text_value = splitText[2]
                 for attr in info_attrs:
